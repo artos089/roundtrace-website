@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>RoundTrace Admin</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#17313a;background:#f3f7f8}*{box-sizing:border-box}body{margin:0}.wrap{max-width:1120px;margin:auto;padding:24px}header{background:#fff;border-bottom:1px solid #dce8e9}header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px}h1{font-size:26px;margin:6px 0 3px}h2{font-size:18px;margin:0 0 13px}small,.muted{color:#667c82}.tag{font-size:11px;font-weight:750;letter-spacing:1px;color:#0b7980}.card{background:white;border:1px solid #dfebed;border-radius:17px;padding:22px;margin:20px 0;box-shadow:0 10px 25px #113b430a}button,input{font:inherit;border-radius:10px;padding:11px 13px}input{width:100%;border:1px solid #ccdcdf;margin:6px 0 14px}button{cursor:pointer;background:#0e7b82;color:white;border:0;font-weight:650}button.secondary{background:#eaf3f3;color:#18515a}button.danger{background:#a94040}button:disabled{opacity:.5;cursor:wait}button:focus-visible,input:focus-visible{outline:3px solid #7ec4c8;outline-offset:2px}.actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.tabs{display:flex;gap:7px;overflow:auto;white-space:nowrap;padding:10px 0}.tabs button{background:#e4eff0;color:#23474c}.tabs button.active{background:#0e7b82;color:white}.entry{border-top:1px solid #e4eeee;padding:18px 0}.entry:first-of-type{border:0}.meta{color:#647980;font-size:13px;margin:6px 0 14px}pre{white-space:pre-wrap;word-break:break-word;background:#f4f8f8;border:1px solid #dde8e9;padding:12px;border-radius:10px;max-height:290px;overflow:auto}.error{color:#9d2828}.success{color:#137747}#msg{min-height:22px;margin-top:8px}#login{max-width:480px;margin:45px auto}[hidden]{display:none!important}@media(max-width:600px){.wrap{padding:16px}.card{padding:17px}header .wrap{flex-wrap:wrap}}
+</style></head>
+<body><header><div class="wrap"><div><div class="tag">ROUNDTRACE · ADMIN</div><h1>Управление гольф-полями</h1></div><button id="logout" class="secondary" hidden>Выйти</button></div></header>
+<main class="wrap"><section id="login" class="card"><h2>Вход администратора</h2><p class="muted">Войди с подтверждённым аккаунтом RoundTrace. Доступ к модерации проверяется на сервере.</p>
+<form id="loginForm"><label>Email<input id="email" type="email" autocomplete="username" required></label><button type="submit" id="signIn">Отправить ссылку для входа</button></form><p class="muted">Открой письмо на том устройстве, где хочешь пользоваться панелью, и перейди по ссылке. Пароль не требуется.</p></section>
+<section id="app" hidden><div class="card"><div class="actions"><strong id="welcome"></strong><button id="reload" class="secondary">Обновить</button></div><nav class="tabs" aria-label="Разделы" id="tabs"></nav><div id="entries"></div></div></section><div id="msg" role="status" aria-live="polite"></div></main>
+<script type="module">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.10/+esm';
+// This is a public, browser-safe API key. Never place a service_role key in a website.
+const supabase=createClient('https://cmdkxhajugjoytlqddhb.supabase.co','sb_publishable_f589DRVj11BXq2F-bSdLTQ_5V2rUhmY');
+const $=id=>document.getElementById(id);
+const types=[
+{id:'pending',label:'Новые заявки',table:'roundtrace_community_courses',status:'pending'},
+{id:'courses',label:'Опубликованные поля',table:'roundtrace_community_courses',status:'approved'},
+{id:'edits',label:'Исправления',table:'roundtrace_community_course_edits',status:'pending'},
+{id:'reports',label:'Жалобы',table:'roundtrace_community_reports',status:'open'},
+{id:'rejected',label:'Отклонённые',table:'roundtrace_community_courses',status:'rejected'}
+];
+let active='pending',loaded={},sessionUser=null;
+const node=(tag,value,cls)=>{let el=document.createElement(tag);if(value!==undefined&&value!==null)el.textContent=String(value);if(cls)el.className=cls;return el};
+const tell=(msg,error=false)=>{$('msg').textContent=msg;$('msg').className=error?'error':'success'};
+function addButton(parent,label,action,cls='secondary'){
+const button=node('button',label,cls);button.type='button';button.addEventListener('click',async()=>{button.disabled=true;try{await action()}catch(e){tell(e.message||'Ошибка операции',true)}finally{button.disabled=false}});parent.append(button)}
+async function guard(){const {data:{user},error}=await supabase.auth.getUser();if(error||!user){sessionUser=null;return false}
+const {data,error:checkError}=await supabase.rpc('roundtrace_is_admin');
+if(checkError||data!==true){sessionUser=null;await supabase.auth.signOut();tell('Этот аккаунт не имеет прав администратора.',true);return false}
+sessionUser=user;return true}
+async function show(){let ok=await guard();$('login').hidden=ok;$('app').hidden=!ok;$('logout').hidden=!ok;
+if(ok){$('welcome').textContent='Администратор: '+sessionUser.email;await refresh()}}
+async function fetchAll(){loaded={};const requests=types.map(async t=>{let {data,error}=await supabase.from(t.table).select('*').eq('status',t.status).order('created_at',{ascending:false}).limit(200);if(error)throw error;loaded[t.id]=data||[]});await Promise.all(requests)}
+async function refresh(){tell('Загрузка…');try{await fetchAll();draw();tell('Данные обновлены')}catch(e){tell(e.message||'Не удалось загрузить заявки',true)}}
+function draw(){const tabs=$('tabs');tabs.replaceChildren();types.forEach(t=>{
+const button=node('button',t.label+' · '+(loaded[t.id]?.length||0),active===t.id?'active':'');
+button.addEventListener('click',()=>{active=t.id;draw()});tabs.append(button)});
+const host=$('entries');host.replaceChildren();const rows=loaded[active]||[];
+if(!rows.length){host.append(node('p','Здесь пока нет записей.','muted'));return}
+rows.forEach(item=>host.append(renderEntry(item,active)))}
+function renderEntry(r,type){const section=node('article',null,'entry');
+const header=type==='edits'?'Исправление '+r.id.slice(0,8):type==='reports'?'Жалоба '+r.id.slice(0,8):(r.name||'Без названия');
+section.append(node('h2',header));
+const about=[r.city,r.country_code,r.reason,'Статус: '+r.status,'Дата: '+new Date(r.created_at).toLocaleString('ru-RU')].filter(Boolean).join(' · ');
+section.append(node('div',about,'meta'));
+if(r.course_id)section.append(node('div','ID поля: '+r.course_id,'meta'));
+const details=node('details');details.append(node('summary','Показать данные'));
+const content=node('pre',JSON.stringify({id:r.id,author_id:r.author_id,course_id:r.course_id,latitude:r.latitude,longitude:r.longitude,holes:r.holes,reason:r.reason},null,2));
+details.append(content);section.append(details);
+const actions=node('div',null,'actions');actions.style.marginTop='13px';
+if(type==='pending'){
+ addButton(actions,'Одобрить',()=>change('roundtrace_community_courses',r.id,'approved'),'');
+ addButton(actions,'Отклонить',()=>change('roundtrace_community_courses',r.id,'rejected'),'danger')}
+if(type==='courses')addButton(actions,'Скрыть поле',()=>change('roundtrace_community_courses',r.id,'rejected'),'danger');
+if(type==='rejected')addButton(actions,'Восстановить',()=>change('roundtrace_community_courses',r.id,'approved'));
+if(type==='edits'){
+ addButton(actions,'Применить исправление',()=>approveEdit(r.id),'');
+ addButton(actions,'Отклонить',()=>change('roundtrace_community_course_edits',r.id,'rejected'),'danger')}
+if(type==='reports')addButton(actions,'Отметить рассмотренной',()=>change('roundtrace_community_reports',r.id,'resolved'),'');
+section.append(actions);return section}
+async function change(table,id,status){
+if(!confirm('Подтвердить действие: '+status+'?'))return;
+const patch={status};if(table!=='roundtrace_community_reports')patch.reviewed_at=new Date().toISOString();
+const {data,error}=await supabase.from(table).update(patch).eq('id',id).select('id');
+if(error)throw error;if(!data?.length)throw Error('Запись не изменена');await refresh()}
+async function approveEdit(id){
+if(!confirm('Применить проверенные изменения лунок к опубликованному полю?'))return;
+const {error}=await supabase.rpc('roundtrace_admin_approve_edit',{p_edit_id:id});if(error)throw error;await refresh()}
+$('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const email=$('email').value.trim();
+ if(!email){tell('Укажи email администратора.',true);return}
+ $('signIn').disabled=true;
+ tell('Отправляем ссылку для входа…');
+ try{
+  const {error}=await supabase.auth.signInWithOtp({
+   email,
+   options:{
+    shouldCreateUser:false,
+    emailRedirectTo:'https://artos089.github.io/roundtrace-website/admin.html'
+   }
+  });
+  if(error)throw error;
+  tell('Проверь почту. Открой письмо на этом устройстве и перейди по ссылке.');
+ }catch(err){tell(err.message||'Не удалось отправить ссылку.',true)}
+ finally{$('signIn').disabled=false}
+});
+$('logout').addEventListener('click',async()=>{await supabase.auth.signOut();loaded={};$('login').hidden=false;$('app').hidden=true;$('logout').hidden=true;tell('Вы вышли')});
+$('reload').addEventListener('click',refresh);show().catch(e=>tell(e.message,true));
+</script></body></html>
