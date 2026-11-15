@@ -14,40 +14,32 @@
   color: #17313a;
   background: #f3f7f8;
 }
-
 * { box-sizing: border-box; }
 body { margin: 0; }
-
 .wrap {
   max-width: 1120px;
   margin: auto;
   padding: 24px;
 }
-
 header {
   background: #fff;
   border-bottom: 1px solid #dce8e9;
 }
-
 header .wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
 }
-
 h1 { font-size: 26px; margin: 6px 0 3px; }
 h2 { font-size: 18px; margin: 0 0 13px; }
-
-.muted { color: #667c82; }
-
+small, .muted { color: #667c82; }
 .tag {
   font-size: 11px;
   font-weight: 750;
   letter-spacing: 1px;
   color: #0b7980;
 }
-
 .card {
   background: white;
   border: 1px solid #dfebed;
@@ -56,19 +48,16 @@ h2 { font-size: 18px; margin: 0 0 13px; }
   margin: 20px 0;
   box-shadow: 0 10px 25px #113b430a;
 }
-
 button, input {
   font: inherit;
   border-radius: 10px;
   padding: 11px 13px;
 }
-
 input {
   width: 100%;
   border: 1px solid #ccdcdf;
   margin: 6px 0 14px;
 }
-
 button {
   cursor: pointer;
   background: #0e7b82;
@@ -76,28 +65,26 @@ button {
   border: 0;
   font-weight: 650;
 }
-
 button.secondary {
   background: #eaf3f3;
   color: #18515a;
 }
-
 button.danger { background: #a94040; }
-button:disabled { opacity: .5; cursor: wait; }
-
+button:disabled {
+  opacity: .5;
+  cursor: wait;
+}
 button:focus-visible,
 input:focus-visible {
   outline: 3px solid #7ec4c8;
   outline-offset: 2px;
 }
-
 .actions {
   display: flex;
   gap: 9px;
   flex-wrap: wrap;
   align-items: center;
 }
-
 .tabs {
   display: flex;
   gap: 7px;
@@ -105,30 +92,24 @@ input:focus-visible {
   white-space: nowrap;
   padding: 10px 0;
 }
-
 .tabs button {
   background: #e4eff0;
   color: #23474c;
 }
-
 .tabs button.active {
   background: #0e7b82;
   color: white;
 }
-
 .entry {
   border-top: 1px solid #e4eeee;
   padding: 18px 0;
 }
-
 .entry:first-of-type { border: 0; }
-
 .meta {
   color: #647980;
   font-size: 13px;
   margin: 6px 0 14px;
 }
-
 textarea {
   width: 100%;
   max-width: 680px;
@@ -141,16 +122,13 @@ textarea {
   background: #fbfdfd;
   color: #17313a;
 }
-
 .reason-field { margin: 15px 0; }
-
 .reason-field label {
   font-size: 14px;
   font-weight: 700;
   display: block;
   margin: 0 0 7px;
 }
-
 .review-note {
   background: #fff5e9;
   border: 1px solid #efd3ae;
@@ -158,7 +136,6 @@ textarea {
   padding: 12px;
   margin: 10px 0;
 }
-
 .holes-wrap {
   max-width: 100%;
   overflow-x: auto;
@@ -166,7 +143,6 @@ textarea {
   border-radius: 12px;
   margin-top: 12px;
 }
-
 .holes-table {
   border-collapse: collapse;
   width: 100%;
@@ -174,7 +150,6 @@ textarea {
   font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
-
 .holes-table th,
 .holes-table td {
   padding: 9px 10px;
@@ -182,7 +157,6 @@ textarea {
   text-align: right;
   white-space: nowrap;
 }
-
 .holes-table th:first-child,
 .holes-table td:first-child {
   text-align: left;
@@ -190,37 +164,30 @@ textarea {
   left: 0;
   background: white;
 }
-
 .holes-table th {
   background: #eaf3f4;
   color: #244a52;
 }
-
 .holes-table th:first-child {
   background: #eaf3f4;
 }
-
 .holes-table tr:last-child td {
   font-weight: 700;
   background: #f2f8f8;
 }
-
 .holes-table tr:last-child td:first-child {
   background: #f2f8f8;
 }
-
 .holes-table .bad {
   color: #9d2828;
   font-weight: 700;
 }
-
 .holes-table caption {
   padding: 10px;
   text-align: left;
   color: #51696c;
   font-weight: 600;
 }
-
 pre {
   white-space: pre-wrap;
   word-break: break-word;
@@ -231,25 +198,19 @@ pre {
   max-height: 290px;
   overflow: auto;
 }
-
 .error { color: #9d2828; }
 .success { color: #137747; }
-
 #msg {
   min-height: 22px;
   margin-top: 8px;
 }
-
 #login {
   max-width: 480px;
   margin: 45px auto;
 }
+[hidden] { display: none !important; }
 
-[hidden] {
-  display: none !important;
-}
-
-@media (max-width: 600px) {
+@media(max-width:600px) {
   .wrap { padding: 16px; }
   .card { padding: 17px; }
   header .wrap { flex-wrap: wrap; }
@@ -265,12 +226,7 @@ pre {
       <div class="tag">ROUNDTRACE · ADMIN</div>
       <h1>Управление гольф-полями</h1>
     </div>
-
-    <button
-      id="logout"
-      class="secondary"
-      hidden
-    >
+    <button id="logout" class="secondary" hidden>
       Выйти
     </button>
   </div>
@@ -280,7 +236,6 @@ pre {
 
   <section id="login" class="card">
     <h2>Вход администратора</h2>
-
     <p class="muted">
       Войди с подтверждённым аккаунтом RoundTrace.
       Доступ к модерации проверяется на сервере.
@@ -296,7 +251,6 @@ pre {
           required
         >
       </label>
-
       <button type="submit" id="signIn">
         Отправить ссылку для входа
       </button>
@@ -305,17 +259,14 @@ pre {
     <p class="muted">
       Открой письмо на том устройстве,
       где хочешь пользоваться панелью,
-      и перейди по ссылке.
-      Пароль не требуется.
+      и перейди по ссылке. Пароль не требуется.
     </p>
   </section>
 
   <section id="app" hidden>
     <div class="card">
-
       <div class="actions">
         <strong id="welcome"></strong>
-
         <button id="reload" class="secondary">
           Обновить
         </button>
@@ -344,17 +295,13 @@ pre {
 import { createClient } from
   'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.10/+esm';
 
-// Public browser-safe API key.
-// Never put a service_role key in this website.
-
+// Public API key. Never use service_role here.
 const supabase = createClient(
   'https://cmdkxhajugjoytlqddhb.supabase.co',
   'sb_publishable_f589DRVj11BXq2F-bSdLTQ_5V2rUhmY'
 );
 
 const $ = id => document.getElementById(id);
-
-// MARK: - Sections
 
 const types = [
   {
@@ -386,6 +333,12 @@ const types = [
     label: 'Отклонённые',
     table: 'roundtrace_community_courses',
     status: 'rejected'
+  },
+  {
+    id: 'notifications',
+    label: 'Уведомления',
+    table: 'roundtrace_community_notifications',
+    status: null
   }
 ];
 
@@ -429,10 +382,7 @@ function addButton(
     try {
       await action();
     } catch (e) {
-      tell(
-        e.message || 'Ошибка операции',
-        true
-      );
+      tell(e.message || 'Ошибка операции', true);
     } finally {
       button.disabled = false;
     }
@@ -491,16 +441,28 @@ async function show() {
   }
 }
 
-// MARK: - Load Data
+// MARK: - Fetch Data
 
 async function fetchAll() {
   loaded = {};
 
   const requests = types.map(async t => {
-    const { data, error } = await supabase
+    let request = supabase
       .from(t.table)
-      .select('*')
-      .eq('status', t.status)
+      .select('*');
+
+    if (t.status !== null) {
+      request = request.eq('status', t.status);
+    }
+
+    if (t.id === 'notifications') {
+      request = request.eq(
+        'recipient_id',
+        sessionUser.id
+      );
+    }
+
+    const { data, error } = await request
       .order('created_at', {
         ascending: false
       })
@@ -522,7 +484,6 @@ async function refresh() {
   try {
     await fetchAll();
     draw();
-
     tell('Данные обновлены');
   } catch (e) {
     tell(
@@ -539,9 +500,16 @@ function draw() {
   tabs.replaceChildren();
 
   types.forEach(t => {
+    const count =
+      t.id === 'notifications'
+        ? (loaded[t.id] || []).filter(
+            n => !n.read_at
+          ).length
+        : (loaded[t.id]?.length || 0);
+
     const button = node(
       'button',
-      t.label + ' · ' + (loaded[t.id]?.length || 0),
+      t.label + ' · ' + count,
       active === t.id ? 'active' : ''
     );
 
@@ -570,7 +538,11 @@ function draw() {
   }
 
   rows.forEach(item => {
-    host.append(renderEntry(item, active));
+    host.append(
+      active === 'notifications'
+        ? renderNotice(item)
+        : renderEntry(item, active)
+    );
   });
 }
 
@@ -587,6 +559,7 @@ function holesTable(holes) {
         'error'
       )
     );
+
     return fragment;
   }
 
@@ -604,12 +577,12 @@ function holesTable(holes) {
   const wrap = node('div', null, 'holes-wrap');
   const table = node('table', null, 'holes-table');
 
-  const cap = node(
-    'caption',
-    `Лунок: ${holes.length} · Расстояния: метры`
+  table.append(
+    node(
+      'caption',
+      `Лунок: ${holes.length} · Расстояния: метры`
+    )
   );
-
-  table.append(cap);
 
   const thead = node('thead');
   const headRow = node('tr');
@@ -654,7 +627,9 @@ function holesTable(holes) {
       const v = h?.[field];
 
       const val =
-        v === null || v === undefined || v === ''
+        v === null ||
+        v === undefined ||
+        v === ''
           ? '—'
           : String(v);
 
@@ -753,7 +728,7 @@ function reasonField(section) {
   return field;
 }
 
-// MARK: - Render Entry
+// MARK: - Render Course Entry
 
 function renderEntry(r, type) {
   const section = node(
@@ -844,7 +819,6 @@ function renderEntry(r, type) {
     reason = reasonField(section);
   }
 
-  // New course submissions
   if (type === 'pending') {
     addButton(
       actions,
@@ -870,7 +844,6 @@ function renderEntry(r, type) {
     );
   }
 
-  // Published courses
   if (type === 'courses') {
     addButton(
       actions,
@@ -885,7 +858,6 @@ function renderEntry(r, type) {
     );
   }
 
-  // Rejected courses
   if (type === 'rejected') {
     addButton(
       actions,
@@ -898,7 +870,6 @@ function renderEntry(r, type) {
     );
   }
 
-  // Proposed corrections
   if (type === 'edits') {
     addButton(
       actions,
@@ -920,7 +891,6 @@ function renderEntry(r, type) {
     );
   }
 
-  // Reports
   if (type === 'reports') {
     addButton(
       actions,
@@ -935,6 +905,77 @@ function renderEntry(r, type) {
   }
 
   section.append(actions);
+
+  return section;
+}
+
+// MARK: - Admin Notifications
+
+function renderNotice(r) {
+  const section = node(
+    'article',
+    null,
+    'entry'
+  );
+
+  const labels = {
+    course_submitted: 'Новое поле на проверку',
+    edit_submitted: 'Новые исправления',
+    course_approved: 'Поле одобрено',
+    course_rejected: 'Поле отклонено',
+    edit_approved: 'Исправления одобрены',
+    edit_rejected: 'Исправления отклонены'
+  };
+
+  section.append(
+    node(
+      'h2',
+      labels[r.event_type] || r.event_type
+    )
+  );
+
+  section.append(
+    node('p', r.course_name || 'Без названия')
+  );
+
+  section.append(
+    node(
+      'div',
+      new Date(r.created_at)
+        .toLocaleString('ru-RU') +
+        ' · ' +
+        (r.read_at ? 'Прочитано' : 'Новое'),
+      'meta'
+    )
+  );
+
+  if (!r.read_at) {
+    addButton(
+      section,
+      'Отметить прочитанным',
+      async () => {
+        const { data, error } = await supabase
+          .from('roundtrace_community_notifications')
+          .update({
+            read_at: new Date().toISOString()
+          })
+          .eq('id', r.id)
+          .eq('recipient_id', sessionUser.id)
+          .select('id');
+
+        if (error) {
+          throw error;
+        }
+
+        if (!data?.length) {
+          throw Error('Уведомление не обновлено');
+        }
+
+        await refresh();
+      }
+    );
+  }
+
   return section;
 }
 
@@ -978,7 +1019,7 @@ async function change(
     return;
   }
 
-  // Reports do not have a reviewed_at column.
+  // Reports do not contain reviewed_at.
   if (table !== 'roundtrace_community_reports') {
     patch.reviewed_at = new Date().toISOString();
   }
@@ -1092,14 +1133,9 @@ $('logout').addEventListener(
   }
 );
 
-// MARK: - Refresh
+// MARK: - Refresh and Start
 
-$('reload').addEventListener(
-  'click',
-  refresh
-);
-
-// MARK: - Start
+$('reload').addEventListener('click', refresh);
 
 show().catch(e => {
   tell(e.message, true);
