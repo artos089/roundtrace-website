@@ -9,176 +9,250 @@
 
 <style>
 :root {
-    font-family: -apple-system, BlinkMacSystemFont,
-                 "Segoe UI", Arial, sans-serif;
-    color: #17313a;
-    background: #f3f7f8;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Arial, sans-serif;
+  color: #17313a;
+  background: #f3f7f8;
 }
 
 * { box-sizing: border-box; }
-
 body { margin: 0; }
 
 .wrap {
-    max-width: 1120px;
-    margin: auto;
-    padding: 24px;
+  max-width: 1120px;
+  margin: auto;
+  padding: 24px;
 }
 
 header {
-    background: #fff;
-    border-bottom: 1px solid #dce8e9;
+  background: #fff;
+  border-bottom: 1px solid #dce8e9;
 }
 
 header .wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
-h1 {
-    font-size: 26px;
-    margin: 6px 0 3px;
-}
+h1 { font-size: 26px; margin: 6px 0 3px; }
+h2 { font-size: 18px; margin: 0 0 13px; }
 
-h2 {
-    font-size: 18px;
-    margin: 0 0 13px;
-}
-
-.muted {
-    color: #667c82;
-}
+.muted { color: #667c82; }
 
 .tag {
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 1px;
-    color: #0b7980;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 1px;
+  color: #0b7980;
 }
 
 .card {
-    background: white;
-    border: 1px solid #dfebed;
-    border-radius: 17px;
-    padding: 22px;
-    margin: 20px 0;
-    box-shadow: 0 10px 25px #113b430a;
+  background: white;
+  border: 1px solid #dfebed;
+  border-radius: 17px;
+  padding: 22px;
+  margin: 20px 0;
+  box-shadow: 0 10px 25px #113b430a;
 }
 
 button, input {
-    font: inherit;
-    border-radius: 10px;
-    padding: 11px 13px;
+  font: inherit;
+  border-radius: 10px;
+  padding: 11px 13px;
 }
 
 input {
-    width: 100%;
-    border: 1px solid #ccdcdf;
-    margin: 6px 0 14px;
+  width: 100%;
+  border: 1px solid #ccdcdf;
+  margin: 6px 0 14px;
 }
 
 button {
-    cursor: pointer;
-    background: #0e7b82;
-    color: white;
-    border: 0;
-    font-weight: 650;
+  cursor: pointer;
+  background: #0e7b82;
+  color: white;
+  border: 0;
+  font-weight: 650;
 }
 
 button.secondary {
-    background: #eaf3f3;
-    color: #18515a;
+  background: #eaf3f3;
+  color: #18515a;
 }
 
-button.danger {
-    background: #a94040;
-}
-
-button:disabled {
-    opacity: .5;
-    cursor: wait;
-}
+button.danger { background: #a94040; }
+button:disabled { opacity: .5; cursor: wait; }
 
 button:focus-visible,
 input:focus-visible {
-    outline: 3px solid #7ec4c8;
-    outline-offset: 2px;
+  outline: 3px solid #7ec4c8;
+  outline-offset: 2px;
 }
 
 .actions {
-    display: flex;
-    gap: 9px;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .tabs {
-    display: flex;
-    gap: 7px;
-    overflow: auto;
-    white-space: nowrap;
-    padding: 10px 0;
+  display: flex;
+  gap: 7px;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px 0;
 }
 
 .tabs button {
-    background: #e4eff0;
-    color: #23474c;
+  background: #e4eff0;
+  color: #23474c;
 }
 
 .tabs button.active {
-    background: #0e7b82;
-    color: white;
+  background: #0e7b82;
+  color: white;
 }
 
 .entry {
-    border-top: 1px solid #e4eeee;
-    padding: 18px 0;
+  border-top: 1px solid #e4eeee;
+  padding: 18px 0;
 }
 
-.entry:first-of-type {
-    border: 0;
-}
+.entry:first-of-type { border: 0; }
 
 .meta {
-    color: #647980;
-    font-size: 13px;
-    margin: 6px 0 14px;
+  color: #647980;
+  font-size: 13px;
+  margin: 6px 0 14px;
+}
+
+textarea {
+  width: 100%;
+  max-width: 680px;
+  min-height: 86px;
+  resize: vertical;
+  padding: 12px;
+  border: 1px solid #c9dade;
+  border-radius: 12px;
+  font: inherit;
+  background: #fbfdfd;
+  color: #17313a;
+}
+
+.reason-field { margin: 15px 0; }
+
+.reason-field label {
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  margin: 0 0 7px;
+}
+
+.review-note {
+  background: #fff5e9;
+  border: 1px solid #efd3ae;
+  border-radius: 11px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.holes-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid #dce9ea;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+.holes-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.holes-table th,
+.holes-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid #e5eff0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.holes-table th:first-child,
+.holes-table td:first-child {
+  text-align: left;
+  position: sticky;
+  left: 0;
+  background: white;
+}
+
+.holes-table th {
+  background: #eaf3f4;
+  color: #244a52;
+}
+
+.holes-table th:first-child {
+  background: #eaf3f4;
+}
+
+.holes-table tr:last-child td {
+  font-weight: 700;
+  background: #f2f8f8;
+}
+
+.holes-table tr:last-child td:first-child {
+  background: #f2f8f8;
+}
+
+.holes-table .bad {
+  color: #9d2828;
+  font-weight: 700;
+}
+
+.holes-table caption {
+  padding: 10px;
+  text-align: left;
+  color: #51696c;
+  font-weight: 600;
 }
 
 pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-    background: #f4f8f8;
-    border: 1px solid #dde8e9;
-    padding: 12px;
-    border-radius: 10px;
-    max-height: 290px;
-    overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #f4f8f8;
+  border: 1px solid #dde8e9;
+  padding: 12px;
+  border-radius: 10px;
+  max-height: 290px;
+  overflow: auto;
 }
 
 .error { color: #9d2828; }
 .success { color: #137747; }
 
 #msg {
-    min-height: 22px;
-    margin-top: 8px;
+  min-height: 22px;
+  margin-top: 8px;
 }
 
 #login {
-    max-width: 480px;
-    margin: 45px auto;
+  max-width: 480px;
+  margin: 45px auto;
 }
 
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
 
-@media(max-width:600px) {
-    .wrap { padding: 16px; }
-    .card { padding: 17px; }
-    header .wrap { flex-wrap: wrap; }
+@media (max-width: 600px) {
+  .wrap { padding: 16px; }
+  .card { padding: 17px; }
+  header .wrap { flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -186,113 +260,96 @@ pre {
 <body>
 
 <header>
-    <div class="wrap">
-        <div>
-            <div class="tag">ROUNDTRACE · ADMIN</div>
-            <h1>Управление гольф-полями</h1>
-        </div>
-
-        <button
-            id="logout"
-            class="secondary"
-            hidden
-        >
-            Выйти
-        </button>
+  <div class="wrap">
+    <div>
+      <div class="tag">ROUNDTRACE · ADMIN</div>
+      <h1>Управление гольф-полями</h1>
     </div>
+
+    <button
+      id="logout"
+      class="secondary"
+      hidden
+    >
+      Выйти
+    </button>
+  </div>
 </header>
 
 <main class="wrap">
 
-    <section id="login" class="card">
+  <section id="login" class="card">
+    <h2>Вход администратора</h2>
 
-        <h2>Вход администратора</h2>
+    <p class="muted">
+      Войди с подтверждённым аккаунтом RoundTrace.
+      Доступ к модерации проверяется на сервере.
+    </p>
 
-        <p class="muted">
-            Войди с подтверждённым аккаунтом
-            RoundTrace. Доступ к модерации
-            проверяется на сервере.
-        </p>
+    <form id="loginForm">
+      <label>
+        Email
+        <input
+          id="email"
+          type="email"
+          autocomplete="username"
+          required
+        >
+      </label>
 
-        <form id="loginForm">
+      <button type="submit" id="signIn">
+        Отправить ссылку для входа
+      </button>
+    </form>
 
-            <label>
-                Email
+    <p class="muted">
+      Открой письмо на том устройстве,
+      где хочешь пользоваться панелью,
+      и перейди по ссылке.
+      Пароль не требуется.
+    </p>
+  </section>
 
-                <input
-                    id="email"
-                    type="email"
-                    autocomplete="username"
-                    required
-                >
-            </label>
+  <section id="app" hidden>
+    <div class="card">
 
-            <button
-                type="submit"
-                id="signIn"
-            >
-                Отправить ссылку для входа
-            </button>
+      <div class="actions">
+        <strong id="welcome"></strong>
 
-        </form>
+        <button id="reload" class="secondary">
+          Обновить
+        </button>
+      </div>
 
-        <p class="muted">
-            Открой письмо на том устройстве,
-            где хочешь пользоваться панелью,
-            и перейди по ссылке.
-            Пароль не требуется.
-        </p>
+      <nav
+        class="tabs"
+        aria-label="Разделы"
+        id="tabs"
+      ></nav>
 
-    </section>
+      <div id="entries"></div>
+    </div>
+  </section>
 
-    <section id="app" hidden>
-
-        <div class="card">
-
-            <div class="actions">
-
-                <strong id="welcome"></strong>
-
-                <button
-                    id="reload"
-                    class="secondary"
-                >
-                    Обновить
-                </button>
-
-            </div>
-
-            <nav
-                class="tabs"
-                aria-label="Разделы"
-                id="tabs"
-            ></nav>
-
-            <div id="entries"></div>
-
-        </div>
-
-    </section>
-
-    <div
-        id="msg"
-        role="status"
-        aria-live="polite"
-    ></div>
+  <div
+    id="msg"
+    role="status"
+    aria-live="polite"
+  ></div>
 
 </main>
 
 <script type="module">
 
 import { createClient } from
-    'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.10/+esm';
+  'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.10/+esm';
 
-// Public browser-safe Supabase key.
-// Never put service_role secrets in this file.
+// Public browser-safe API key.
+// Never put a service_role key in this website.
 
 const supabase = createClient(
-    'https://cmdkxhajugjoytlqddhb.supabase.co',
-    'sb_publishable_f589DRVj11BXq2F-bSdLTQ_5V2rUhmY'
+  'https://cmdkxhajugjoytlqddhb.supabase.co',
+  'sb_publishable_f589DRVj11BXq2F-bSdLTQ_5V2rUhmY'
 );
 
 const $ = id => document.getElementById(id);
@@ -300,566 +357,752 @@ const $ = id => document.getElementById(id);
 // MARK: - Sections
 
 const types = [
-    {
-        id: 'pending',
-        label: 'Новые заявки',
-        table: 'roundtrace_community_courses',
-        status: 'pending'
-    },
-    {
-        id: 'courses',
-        label: 'Опубликованные поля',
-        table: 'roundtrace_community_courses',
-        status: 'approved'
-    },
-    {
-        id: 'edits',
-        label: 'Исправления',
-        table: 'roundtrace_community_course_edits',
-        status: 'pending'
-    },
-    {
-        id: 'reports',
-        label: 'Жалобы',
-        table: 'roundtrace_community_reports',
-        status: 'open'
-    },
-    {
-        id: 'rejected',
-        label: 'Отклонённые',
-        table: 'roundtrace_community_courses',
-        status: 'rejected'
-    }
+  {
+    id: 'pending',
+    label: 'Новые заявки',
+    table: 'roundtrace_community_courses',
+    status: 'pending'
+  },
+  {
+    id: 'courses',
+    label: 'Опубликованные поля',
+    table: 'roundtrace_community_courses',
+    status: 'approved'
+  },
+  {
+    id: 'edits',
+    label: 'Исправления',
+    table: 'roundtrace_community_course_edits',
+    status: 'pending'
+  },
+  {
+    id: 'reports',
+    label: 'Жалобы',
+    table: 'roundtrace_community_reports',
+    status: 'open'
+  },
+  {
+    id: 'rejected',
+    label: 'Отклонённые',
+    table: 'roundtrace_community_courses',
+    status: 'rejected'
+  }
 ];
 
 let active = 'pending';
 let loaded = {};
 let sessionUser = null;
 
-// MARK: - UI Helpers
+// MARK: - Helpers
 
 const node = (tag, value, cls) => {
-    const el = document.createElement(tag);
+  const el = document.createElement(tag);
 
-    if (value !== undefined && value !== null) {
-        el.textContent = String(value);
-    }
+  if (value !== undefined && value !== null) {
+    el.textContent = String(value);
+  }
 
-    if (cls) {
-        el.className = cls;
-    }
+  if (cls) {
+    el.className = cls;
+  }
 
-    return el;
+  return el;
 };
 
 const tell = (msg, error = false) => {
-    $('msg').textContent = msg;
-    $('msg').className = error ? 'error' : 'success';
+  $('msg').textContent = msg;
+  $('msg').className = error ? 'error' : 'success';
 };
 
 function addButton(
-    parent,
-    label,
-    action,
-    cls = 'secondary'
+  parent,
+  label,
+  action,
+  cls = 'secondary'
 ) {
-    const button = node('button', label, cls);
-    button.type = 'button';
+  const button = node('button', label, cls);
+  button.type = 'button';
 
-    button.addEventListener('click', async () => {
-        button.disabled = true;
+  button.addEventListener('click', async () => {
+    button.disabled = true;
 
-        try {
-            await action();
-        } catch (e) {
-            tell(
-                e.message || 'Ошибка операции',
-                true
-            );
-        } finally {
-            button.disabled = false;
-        }
-    });
+    try {
+      await action();
+    } catch (e) {
+      tell(
+        e.message || 'Ошибка операции',
+        true
+      );
+    } finally {
+      button.disabled = false;
+    }
+  });
 
-    parent.append(button);
+  parent.append(button);
 }
 
 // MARK: - Admin Authorization
 
 async function guard() {
+  const {
+    data: { user },
+    error
+  } = await supabase.auth.getUser();
 
-    const {
-        data: { user },
-        error
-    } = await supabase.auth.getUser();
+  if (error || !user) {
+    sessionUser = null;
+    return false;
+  }
 
-    if (error || !user) {
-        sessionUser = null;
-        return false;
-    }
+  const {
+    data,
+    error: checkError
+  } = await supabase.rpc('roundtrace_is_admin');
 
-    const {
-        data,
-        error: checkError
-    } = await supabase.rpc(
-        'roundtrace_is_admin'
+  if (checkError || data !== true) {
+    sessionUser = null;
+
+    await supabase.auth.signOut();
+
+    tell(
+      'Этот аккаунт не имеет прав администратора.',
+      true
     );
 
-    if (checkError || data !== true) {
+    return false;
+  }
 
-        sessionUser = null;
-
-        await supabase.auth.signOut();
-
-        tell(
-            'Этот аккаунт не имеет прав администратора.',
-            true
-        );
-
-        return false;
-    }
-
-    sessionUser = user;
-    return true;
+  sessionUser = user;
+  return true;
 }
 
 async function show() {
+  const ok = await guard();
 
-    const ok = await guard();
+  $('login').hidden = ok;
+  $('app').hidden = !ok;
+  $('logout').hidden = !ok;
 
-    $('login').hidden = ok;
-    $('app').hidden = !ok;
-    $('logout').hidden = !ok;
+  if (ok) {
+    $('welcome').textContent =
+      'Администратор: ' + sessionUser.email;
 
-    if (ok) {
-
-        $('welcome').textContent =
-            'Администратор: ' + sessionUser.email;
-
-        await refresh();
-    }
+    await refresh();
+  }
 }
 
 // MARK: - Load Data
 
 async function fetchAll() {
+  loaded = {};
 
-    loaded = {};
+  const requests = types.map(async t => {
+    const { data, error } = await supabase
+      .from(t.table)
+      .select('*')
+      .eq('status', t.status)
+      .order('created_at', {
+        ascending: false
+      })
+      .limit(200);
 
-    const requests = types.map(async t => {
+    if (error) {
+      throw error;
+    }
 
-        const { data, error } = await supabase
-            .from(t.table)
-            .select('*')
-            .eq('status', t.status)
-            .order('created_at', {
-                ascending: false
-            })
-            .limit(200);
+    loaded[t.id] = data || [];
+  });
 
-        if (error) {
-            throw error;
-        }
-
-        loaded[t.id] = data || [];
-    });
-
-    await Promise.all(requests);
+  await Promise.all(requests);
 }
 
 async function refresh() {
+  tell('Загрузка…');
 
-    tell('Загрузка…');
+  try {
+    await fetchAll();
+    draw();
 
-    try {
-
-        await fetchAll();
-        draw();
-
-        tell('Данные обновлены');
-
-    } catch (e) {
-
-        tell(
-            e.message || 'Не удалось загрузить заявки',
-            true
-        );
-    }
+    tell('Данные обновлены');
+  } catch (e) {
+    tell(
+      e.message || 'Не удалось загрузить заявки',
+      true
+    );
+  }
 }
 
-// MARK: - Draw Tabs
+// MARK: - Tabs
 
 function draw() {
+  const tabs = $('tabs');
+  tabs.replaceChildren();
 
-    const tabs = $('tabs');
-    tabs.replaceChildren();
+  types.forEach(t => {
+    const button = node(
+      'button',
+      t.label + ' · ' + (loaded[t.id]?.length || 0),
+      active === t.id ? 'active' : ''
+    );
 
-    types.forEach(t => {
-
-        const button = node(
-            'button',
-            t.label + ' · ' + (loaded[t.id]?.length || 0),
-            active === t.id ? 'active' : ''
-        );
-
-        button.addEventListener('click', () => {
-            active = t.id;
-            draw();
-        });
-
-        tabs.append(button);
+    button.addEventListener('click', () => {
+      active = t.id;
+      draw();
     });
 
-    const host = $('entries');
-    host.replaceChildren();
+    tabs.append(button);
+  });
 
-    const rows = loaded[active] || [];
+  const host = $('entries');
+  host.replaceChildren();
 
-    if (!rows.length) {
+  const rows = loaded[active] || [];
 
-        host.append(
-            node(
-                'p',
-                'Здесь пока нет записей.',
-                'muted'
-            )
-        );
+  if (!rows.length) {
+    host.append(
+      node(
+        'p',
+        'Здесь пока нет записей.',
+        'muted'
+      )
+    );
+    return;
+  }
 
-        return;
-    }
+  rows.forEach(item => {
+    host.append(renderEntry(item, active));
+  });
+}
 
-    rows.forEach(item => {
-        host.append(
-            renderEntry(item, active)
-        );
+// MARK: - Scorecard Table
+
+function holesTable(holes) {
+  const fragment = document.createDocumentFragment();
+
+  if (!Array.isArray(holes) || holes.length === 0) {
+    fragment.append(
+      node(
+        'p',
+        'Нет данных лунок. Проверь заявку перед одобрением.',
+        'error'
+      )
+    );
+    return fragment;
+  }
+
+  const columns = [
+    ['number', '#'],
+    ['par', 'Par'],
+    ['strokeIndexMen', 'SI'],
+    ['white', 'White'],
+    ['yellow', 'Yellow'],
+    ['blue', 'Blue'],
+    ['red', 'Red'],
+    ['black', 'Black']
+  ];
+
+  const wrap = node('div', null, 'holes-wrap');
+  const table = node('table', null, 'holes-table');
+
+  const cap = node(
+    'caption',
+    `Лунок: ${holes.length} · Расстояния: метры`
+  );
+
+  table.append(cap);
+
+  const thead = node('thead');
+  const headRow = node('tr');
+
+  columns.forEach(([, title]) => {
+    headRow.append(node('th', title));
+  });
+
+  thead.append(headRow);
+  table.append(thead);
+
+  const tbody = node('tbody');
+
+  const ordered = [...holes].sort(
+    (a, b) =>
+      (Number(a.number) || 0) -
+      (Number(b.number) || 0)
+  );
+
+  const totals = {
+    par: 0,
+    white: 0,
+    yellow: 0,
+    blue: 0,
+    red: 0,
+    black: 0
+  };
+
+  const counts = {
+    par: 0,
+    white: 0,
+    yellow: 0,
+    blue: 0,
+    red: 0,
+    black: 0
+  };
+
+  ordered.forEach(h => {
+    const tr = node('tr');
+
+    columns.forEach(([field]) => {
+      const v = h?.[field];
+
+      const val =
+        v === null || v === undefined || v === ''
+          ? '—'
+          : String(v);
+
+      const cell = node('td', val);
+
+      if (
+        field === 'par' &&
+        v != null &&
+        !(Number(v) >= 3 && Number(v) <= 6)
+      ) {
+        cell.className = 'bad';
+      }
+
+      if (
+        ['white', 'yellow', 'blue', 'red', 'black']
+          .includes(field) &&
+        v != null &&
+        !(Number(v) >= 1 && Number(v) <= 1500)
+      ) {
+        cell.className = 'bad';
+      }
+
+      if (
+        field === 'strokeIndexMen' &&
+        v != null &&
+        !(Number(v) >= 1 && Number(v) <= 18)
+      ) {
+        cell.className = 'bad';
+      }
+
+      if (
+        Object.hasOwn(totals, field) &&
+        v != null &&
+        v !== '' &&
+        Number.isFinite(Number(v))
+      ) {
+        totals[field] += Number(v);
+        counts[field]++;
+      }
+
+      tr.append(cell);
     });
+
+    tbody.append(tr);
+  });
+
+  const totalsRow = node('tr');
+
+  columns.forEach(([field], i) => {
+    const value =
+      i === 0
+        ? 'Итого'
+        : i === 2
+          ? '—'
+          : counts[field] === holes.length
+            ? totals[field]
+            : '—';
+
+    totalsRow.append(node('td', value));
+  });
+
+  tbody.append(totalsRow);
+  table.append(tbody);
+  wrap.append(table);
+  fragment.append(wrap);
+
+  return fragment;
+}
+
+// MARK: - Rejection Reason
+
+function reasonField(section) {
+  const wrap = node(
+    'div',
+    null,
+    'reason-field'
+  );
+
+  const label = node(
+    'label',
+    'Причина отклонения (обязательно, 5–500 символов):'
+  );
+
+  const field = node('textarea');
+  field.maxLength = 500;
+
+  field.placeholder =
+    'Например: неверные расстояния и Par ' +
+    'на лунках 3 и 5. Исправьте данные ' +
+    'и отправьте новую заявку.';
+
+  label.append(field);
+  wrap.append(label);
+  section.append(wrap);
+
+  return field;
 }
 
 // MARK: - Render Entry
 
 function renderEntry(r, type) {
+  const section = node(
+    'article',
+    null,
+    'entry'
+  );
 
-    const section = node(
-        'article',
-        null,
-        'entry'
-    );
+  const title =
+    type === 'edits'
+      ? 'Исправление ' + r.id.slice(0, 8)
+      : type === 'reports'
+        ? 'Жалоба ' + r.id.slice(0, 8)
+        : (r.name || 'Без названия');
 
-    const header =
-        type === 'edits'
-            ? 'Исправление ' + r.id.slice(0, 8)
-            : type === 'reports'
-                ? 'Жалоба ' + r.id.slice(0, 8)
-                : (r.name || 'Без названия');
+  section.append(node('h2', title));
 
-    section.append(
-        node('h2', header)
-    );
-
-    const about = [
+  section.append(
+    node(
+      'div',
+      [
         r.city,
         r.country_code,
         r.reason,
         'Статус: ' + r.status,
         'Дата: ' +
-            new Date(r.created_at)
-                .toLocaleString('ru-RU')
-    ]
+          new Date(r.created_at).toLocaleString('ru-RU')
+      ]
         .filter(Boolean)
-        .join(' · ');
+        .join(' · '),
+      'meta'
+    )
+  );
 
+  if (r.course_id) {
     section.append(
-        node('div', about, 'meta')
-    );
-
-    if (r.course_id) {
-
-        section.append(
-            node(
-                'div',
-                'ID поля: ' + r.course_id,
-                'meta'
-            )
-        );
-    }
-
-    const details = node('details');
-
-    details.append(
-        node('summary', 'Показать данные')
-    );
-
-    const content = node(
-        'pre',
-        JSON.stringify(
-            {
-                id: r.id,
-                author_id: r.author_id,
-                course_id: r.course_id,
-                latitude: r.latitude,
-                longitude: r.longitude,
-                holes: r.holes,
-                reason: r.reason
-            },
-            null,
-            2
-        )
-    );
-
-    details.append(content);
-    section.append(details);
-
-    const actions = node(
+      node(
         'div',
-        null,
-        'actions'
+        'ID поля: ' + r.course_id,
+        'meta'
+      )
+    );
+  }
+
+  if (r.rejection_reason) {
+    section.append(
+      node(
+        'div',
+        'Причина отклонения: ' +
+          r.rejection_reason,
+        'review-note'
+      )
+    );
+  }
+
+  if (type !== 'reports') {
+    section.append(holesTable(r.holes));
+  }
+
+  const details = node('details');
+  details.style.marginTop = '10px';
+
+  details.append(
+    node('summary', 'Дополнительно: полный JSON')
+  );
+
+  details.append(
+    node('pre', JSON.stringify(r, null, 2))
+  );
+
+  section.append(details);
+
+  const actions = node(
+    'div',
+    null,
+    'actions'
+  );
+
+  actions.style.marginTop = '13px';
+
+  let reason = null;
+
+  if (
+    type === 'pending' ||
+    type === 'courses' ||
+    type === 'edits'
+  ) {
+    reason = reasonField(section);
+  }
+
+  // New course submissions
+  if (type === 'pending') {
+    addButton(
+      actions,
+      'Одобрить',
+      () => change(
+        'roundtrace_community_courses',
+        r.id,
+        'approved'
+      ),
+      ''
     );
 
-    actions.style.marginTop = '13px';
+    addButton(
+      actions,
+      'Отклонить',
+      () => change(
+        'roundtrace_community_courses',
+        r.id,
+        'rejected',
+        reason
+      ),
+      'danger'
+    );
+  }
 
-    // New course submissions
-    if (type === 'pending') {
+  // Published courses
+  if (type === 'courses') {
+    addButton(
+      actions,
+      'Скрыть поле',
+      () => change(
+        'roundtrace_community_courses',
+        r.id,
+        'rejected',
+        reason
+      ),
+      'danger'
+    );
+  }
 
-        addButton(
-            actions,
-            'Одобрить',
-            () => change(
-                'roundtrace_community_courses',
-                r.id,
-                'approved'
-            ),
-            ''
-        );
+  // Rejected courses
+  if (type === 'rejected') {
+    addButton(
+      actions,
+      'Восстановить',
+      () => change(
+        'roundtrace_community_courses',
+        r.id,
+        'approved'
+      )
+    );
+  }
 
-        addButton(
-            actions,
-            'Отклонить',
-            () => change(
-                'roundtrace_community_courses',
-                r.id,
-                'rejected'
-            ),
-            'danger'
-        );
-    }
+  // Proposed corrections
+  if (type === 'edits') {
+    addButton(
+      actions,
+      'Применить исправление',
+      () => approveEdit(r.id),
+      ''
+    );
 
-    // Published courses
-    if (type === 'courses') {
+    addButton(
+      actions,
+      'Отклонить',
+      () => change(
+        'roundtrace_community_course_edits',
+        r.id,
+        'rejected',
+        reason
+      ),
+      'danger'
+    );
+  }
 
-        addButton(
-            actions,
-            'Скрыть поле',
-            () => change(
-                'roundtrace_community_courses',
-                r.id,
-                'rejected'
-            ),
-            'danger'
-        );
-    }
+  // Reports
+  if (type === 'reports') {
+    addButton(
+      actions,
+      'Отметить рассмотренной',
+      () => change(
+        'roundtrace_community_reports',
+        r.id,
+        'resolved'
+      ),
+      ''
+    );
+  }
 
-    // Rejected courses
-    if (type === 'rejected') {
-
-        addButton(
-            actions,
-            'Восстановить',
-            () => change(
-                'roundtrace_community_courses',
-                r.id,
-                'approved'
-            )
-        );
-    }
-
-    // Course corrections
-    if (type === 'edits') {
-
-        addButton(
-            actions,
-            'Применить исправление',
-            () => approveEdit(r.id),
-            ''
-        );
-
-        addButton(
-            actions,
-            'Отклонить',
-            () => change(
-                'roundtrace_community_course_edits',
-                r.id,
-                'rejected'
-            ),
-            'danger'
-        );
-    }
-
-    // Reports
-    if (type === 'reports') {
-
-        addButton(
-            actions,
-            'Отметить рассмотренной',
-            () => change(
-                'roundtrace_community_reports',
-                r.id,
-                'resolved'
-            ),
-            ''
-        );
-    }
-
-    section.append(actions);
-
-    return section;
+  section.append(actions);
+  return section;
 }
 
 // MARK: - Moderation Actions
 
-async function change(table, id, status) {
+async function change(
+  table,
+  id,
+  status,
+  reasonInput = null
+) {
+  const patch = { status };
 
-    if (!confirm(
-        'Подтвердить действие: ' + status + '?'
-    )) {
-        return;
+  if (status === 'rejected') {
+    const reason =
+      (reasonInput?.value || '').trim();
+
+    if (
+      reason.length < 5 ||
+      reason.length > 500
+    ) {
+      reasonInput?.focus();
+
+      throw new Error(
+        'Укажи причину отклонения: ' +
+        'от 5 до 500 символов.'
+      );
     }
 
-    const patch = { status };
+    patch.rejection_reason = reason;
 
-    // Reports table does not have reviewed_at.
-    if (table !== 'roundtrace_community_reports') {
-        patch.reviewed_at = new Date().toISOString();
-    }
+  } else if (
+    table !== 'roundtrace_community_reports'
+  ) {
+    patch.rejection_reason = null;
+  }
 
-    const { data, error } = await supabase
-        .from(table)
-        .update(patch)
-        .eq('id', id)
-        .select('id');
+  if (!confirm(
+    'Подтвердить действие: ' + status + '?'
+  )) {
+    return;
+  }
 
-    if (error) {
-        throw error;
-    }
+  // Reports do not have a reviewed_at column.
+  if (table !== 'roundtrace_community_reports') {
+    patch.reviewed_at = new Date().toISOString();
+  }
 
-    if (!data?.length) {
-        throw Error('Запись не изменена');
-    }
+  const { data, error } = await supabase
+    .from(table)
+    .update(patch)
+    .eq('id', id)
+    .select('id');
 
-    await refresh();
+  if (error) {
+    throw error;
+  }
+
+  if (!data?.length) {
+    throw new Error('Запись не изменена');
+  }
+
+  await refresh();
 }
 
 async function approveEdit(id) {
+  if (!confirm(
+    'Применить проверенные изменения лунок ' +
+    'к опубликованному полю?'
+  )) {
+    return;
+  }
 
-    if (!confirm(
-        'Применить проверенные изменения лунок ' +
-        'к опубликованному полю?'
-    )) {
-        return;
+  const { error } = await supabase.rpc(
+    'roundtrace_admin_approve_edit',
+    {
+      p_edit_id: id
     }
+  );
 
-    const { error } = await supabase.rpc(
-        'roundtrace_admin_approve_edit',
-        {
-            p_edit_id: id
-        }
-    );
+  if (error) {
+    throw error;
+  }
 
-    if (error) {
-        throw error;
-    }
-
-    await refresh();
+  await refresh();
 }
 
 // MARK: - Magic Link Login
 
 $('loginForm').addEventListener(
-    'submit',
-    async e => {
+  'submit',
+  async e => {
+    e.preventDefault();
 
-        e.preventDefault();
+    const email = $('email').value.trim();
 
-        const email = $('email').value.trim();
-
-        if (!email) {
-
-            tell(
-                'Укажи email администратора.',
-                true
-            );
-
-            return;
-        }
-
-        $('signIn').disabled = true;
-
-        tell('Отправляем ссылку для входа…');
-
-        try {
-
-            const { error } =
-                await supabase.auth.signInWithOtp({
-                    email: email,
-                    options: {
-                        shouldCreateUser: false,
-                        emailRedirectTo:
-                            'https://artos089.github.io/roundtrace-website/admin.html'
-                    }
-                });
-
-            if (error) {
-                throw error;
-            }
-
-            tell(
-                'Проверь почту. Открой письмо ' +
-                'на этом устройстве и перейди по ссылке.'
-            );
-
-        } catch (err) {
-
-            tell(
-                err.message ||
-                    'Не удалось отправить ссылку.',
-                true
-            );
-
-        } finally {
-
-            $('signIn').disabled = false;
-        }
+    if (!email) {
+      tell(
+        'Укажи email администратора.',
+        true
+      );
+      return;
     }
+
+    $('signIn').disabled = true;
+    tell('Отправляем ссылку для входа…');
+
+    try {
+      const { error } =
+        await supabase.auth.signInWithOtp({
+          email,
+          options: {
+            shouldCreateUser: false,
+            emailRedirectTo:
+              'https://artos089.github.io/roundtrace-website/admin.html'
+          }
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      tell(
+        'Проверь почту. Открой письмо ' +
+        'на этом устройстве и перейди по ссылке.'
+      );
+
+    } catch (err) {
+      tell(
+        err.message ||
+        'Не удалось отправить ссылку.',
+        true
+      );
+
+    } finally {
+      $('signIn').disabled = false;
+    }
+  }
 );
 
 // MARK: - Logout
 
 $('logout').addEventListener(
-    'click',
-    async () => {
+  'click',
+  async () => {
+    await supabase.auth.signOut();
 
-        await supabase.auth.signOut();
+    loaded = {};
 
-        loaded = {};
+    $('login').hidden = false;
+    $('app').hidden = true;
+    $('logout').hidden = true;
 
-        $('login').hidden = false;
-        $('app').hidden = true;
-        $('logout').hidden = true;
-
-        tell('Вы вышли');
-    }
+    tell('Вы вышли');
+  }
 );
 
 // MARK: - Refresh
 
 $('reload').addEventListener(
-    'click',
-    refresh
+  'click',
+  refresh
 );
 
 // MARK: - Start
 
 show().catch(e => {
-    tell(e.message, true);
+  tell(e.message, true);
 });
 
 </script>
